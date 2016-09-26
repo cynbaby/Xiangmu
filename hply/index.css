@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+		margin:0px auto;
+		padding:0px;
+	}
+	body{
+		width:719px;
+		background:url(images/bg.jpg) repeat;
+	}
+	.flash embed{
+		width:719px;
+		height:289px;
+		}
+	.nav ul{		
+		width:719px;
+		height:45px;
+		list-style:none;
+		}
+	.nav ul li{
+		float:left;
+		}
+	.nav ul li a{
+		display:inline-block;	
+	}
+	#li1{
+		background:url(images/link1.jpg) no-repeat;
+		width:29px;
+		height:45px;
+		}
+	#li2{
+		background:url(images/link2.jpg) no-repeat;
+		width:90px;
+		height:45px;
+		}
+	#li3{
+		background:url(images/link3.jpg) no-repeat;
+		width:88px;
+		height:45px;
+		}
+	#li4{
+		background:url(images/link4.jpg) no-repeat;
+		width:89px;
+		height:45px;
+		}
+	#li5{
+		background:url(images/link5.jpg) no-repeat;
+		width:90px;
+		height:45px;
+		}
+		
+	#li6{
+		background:url(images/link6.jpg) no-repeat;
+		width:87px;
+		height:45px;
+		}
+	#li7{
+		background:url(images/link7.jpg) no-repeat;
+		width:90px;
+		height:45px;
+		}
+	#li8{
+		background:url(images/link8.jpg) no-repeat;
+		width:93px;
+		height:45px;
+		}
+	#li9{
+		background:url(images/link9.jpg) no-repeat;
+		width:63px;
+		height:45px;
+		}
+	.buttom{
+		width:712;
+		height:72px;
+		text-align:center;
+		}
+		
+	.center{
+			background:url(images/lmbg.jpg) repeat-y;
+			margin-bottom:-16px;
+		}

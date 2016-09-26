@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>雲端收藏夾</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>	
+	<link rel="shortcut icon" href="images/11.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="ind.js"></script>
+	<script src="yclib.js"></script>
+	<script src="yunduan.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oMC=document.getElementById('morecontent');
+			yc.addEvent('more','click',change);
+			function change(){
+				if(oMC.style.display=='block'){
+			 		oMC.style.display='none';
+				}
+				else{
+				oMC.style.display='block';
+			}
+		}
+			yc.ajaxRequest("http://218.196.14.220:8080/webtag/favorite_findAll.action",{
+			    'method':"POST",
+			    'send':'null',
+			    'jsonResponseListener':function(json){
+					var oDiv=document.getElementById('content');
+				    var str='';
+			    	for(var i=0;i<json.obj.length;i++){
+			    	var reg=/^([https|http]?:\/\/)?(www)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+			    	//var rega=/[\u4e00-\u9fa5]{1,10}/;
+				    //var reg=/^([https|http|ftp]:\/\/)?[a-z]+.[a-z0-9]+.[a-z]+/i;
+				  	c=json.obj[i];
+				  	//if(rega.test(c.falbel)){
+		        	if(reg.test(c.furl)){
+				    str+='<div class="content-grid"><div class="b-link-stripe b-animate-go  thickbox"><img  src="images/35.jpg" /><div  class="b-wrapper"><h2 class="b-animate b-from-left  b-delay03 "><span>';				   
+			        str+=c.flabel+'<br /><a href='+c.furl+'>'+c.furl+'</a><br />'+c.fdesc;
+				    str+='</span></h2></div></div></div>'		   	  
+				   }
+			    }
+				oDiv.innerHTML=str;
+				}
+			}); 
+	}
+		function show(){
+			var oT=document.getElementById('content');
+			var oB=document.getElementById('btnimga');
+			if(oT.style.height=='810px'){
+				oT.style.height='1640px';
+				oB.src="images/2.png";
+			}else{
+					oT.style.height='810px';
+					oB.src="images/1.png";
+				}
+		}	 
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="header-left">
+			<div class="logo">
+				 <img src="images/38.png"/>
+			</div>
+			<div class="top-nav">
+				<ul >
+					<li class="active" ><a href="index.html" id="1"><img src="images/收藏夹.png"/>收藏</a></li>
+					<li ><a href="index3.html" class="black" id="2"><img src="images/门户2.png"/>門戶</a></li>	
+					<li  ><a href="index4.html" class="black1" id="3"><img src="images/新闻.png"/>新聞</a></li>
+					<li  ><a href="index5.html" class="black2" id="4" ><img src="images/云图.png"/>雲圖</a></li>
+					<li><a href="index.html" class="black3" id="5" onclick="add()"><img src="images/41.png"/>添加</a></li>
+				</ul>
+				<div id="morecontent">
+					<ul id="ul">
+			
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- <p class="footer-class">燕妮&霞輝<a href="" target="_blank">Love U</a></p> -->
+	</div>
+		<div class="content">
+	        <div id="content">
+		        </div>
+		             <input type="image" src="images/1.png"  id="btnimga"  onClick="show()" style=" margin-left:500px"/>
+				</div>
+				<div class="clear"> 
+				</div>
+			<p class="footer-class-in">Copyright © 2016陳燕妮&陳霞輝 <a href="" target="_blank">love U</a> </p>
+			</div>
+		<div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>雲端收藏夾</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+	<link rel="shortcut icon" href="images/11.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="ind.js"></script>
+	<script type="text/javascript" src="yunduan.js"></script>
+	<script type="text/javascript" src="yclib.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oMC=document.getElementById('morecontent');
+			yc.addEvent('more','click',change);
+			function change(){
+				if(oMC.style.display=='block'){
+			 		oMC.style.display='none';
+				}
+				else{
+				 oMC.style.display='block';
+				}
+			}
+		yc.ajaxRequest("http://218.196.14.220:8080/webtag/tag_findAll.action",{
+		   'method':"POST",
+		   'send':'null',
+		   'jsonResponseListener':listener
+		   });
+		}
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="header-left">
+			<div class="logo">
+				 <img src="images/38.png"/>
+			</div>
+			<div class="top-nav">
+				<ul >
+					<li ><a href="index.html" id="1"><img src="images/收藏夹.png"/>收藏</a></li>
+					<li ><a href="index3.html" class="black" id="2"><img src="images/门户.png"/>門戶</a></li>	
+					<li ><a href="index4.html" class="black1" id="3"><img src="images/新闻.png"/>新聞</a></li>
+					<li ><a href="index5.html" class="black2" id="4" ><img src="images/云图.png"/>雲圖</a></li>
+					<li><a href="indes2.html" class="black3" id="5" onclick="add()"><img src="images/41.png">添加</a></li>
+					<li><span id="span1"><input type="button" value="更多" id="more"></span></li>
+				</ul>
+				<div id="morecontent">
+					<ul id="ul">
+			
+					</ul>
+				</div>
+			</div>
+			<ul class="social-in">
+				<li><a href="#"><i> </i></a></li>
+				<li><a href="#"><i class="gmail"> </i></a></li>
+				<li><a href="#"><i class="twitter"> </i></a></li>
+				<li><a href="#"><i class="pin"> </i></a></li>
+				<li><a href="#"><i class="dribble"> </i></a></li>
+				<li><a href="#"><i class="behance"> </i></a></li>
+			</ul>
+			<p class="footer-class">燕妮&霞輝<a href="" target="_blank">LOVE U</a> </p>
+		</div>
+		<div class="header-top">
+			<div class="logo-in">
+				<a href="index.html"><img src="images/logo.png" alt=""></a>
+			</div>
+		</div>
+		<div class="content">
+			<div class="four">
+				<h2>随意填充文字2</h2>
+				<h3>随意填充文字2</h3>
+				<a href="index.html" class="just-do" >随意填充文字2</a>
+				<!--<input type="button" value="添加你喜欢的标签" onclick="add()" id="btn" />-->
+			</div>
+		</div>
+				<p class="footer-class-in">随意填充文字3<a href="" target="_blank">随意填充文字3</a> </p>
+<!-- 
+		<script type="text/javascript">
+				function add(){
+					var newpage="add.html";
+					window.open(newpage,"new window","width=600,height=600", "margin-left=360px");
+					close();
+				}
+	</script> -->
+	</div>
+</body>
+</html>

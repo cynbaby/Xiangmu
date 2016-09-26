@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>云端收藏夹</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+	<link rel="shortcut icon" href="images/11.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="yclib.js"></script>
+    <script>
+	window.onload=function(){
+		var oMC=document.getElementById('morecontent');
+			yc.addEvent('more','click',change);
+			function change(){
+				if(oMC.style.display=='block'){
+			 		oMC.style.display='none';
+				}
+				else{
+				 oMC.style.display='block';
+				}
+			}
+			 
+		 
+		  var str1=[];
+		  var str2=[];
+		  yc.ajaxRequest("http://218.196.14.220:8080/webtag/tag_findAll.action",{
+		   'method':"POST",
+		   'send':'null',
+		   'jsonResponseListener':function(json){
+			  var oDiv=document.getElementById('content');
+			 
+		   var str=[];
+		     for(var key in json.obj){
+				str.push(json.obj[key].tname);
+			    str1.push(json.obj[key].tcount);
+			 }
+		    var oul=document.getElementById('ull');
+			for(var i=3;i<str.length;i++){
+				
+				
+				 var oLi=document.createElement('li');
+				 var oA=document.createElement('a');
+				 
+				  oA.innerHTML=str[i];
+				  oA.style.fontSize=str1[i]+'1px';
+				 // document.getElementById('a').style.fontSize=str[i]+'px';
+				  oLi.appendChild(oA);
+				  oul.appendChild(oLi);
+				}
+			 
+			   }
+		   });
+		 }
+		 function show(){
+			   var oT=document.getElementById('content1');
+			   var oB=document.getElementById('btnimg')
+				if(oT.style.height=='800px'){
+				  oT.style.height='1700px';
+					oB.src="images/2.png";
+					}
+					else{
+						oT.style.height='800px';
+						oB.src="images/1.png";;
+						}
+		  }
+	</script>
+</head>
+
+<body>
+<div class="header">
+		<div class="header-left">
+			<div class="logo">
+				 <img src="images/38.png"> 
+			</div>
+			<div class="top-nav">
+				<ul >
+					<li ><a href="index.html" id="1"><img src="images/收藏夹.png"/>收藏</a></li>
+					<li ><a href="index3.html" class="black" id="2"><img src="images/门户.png"/>門戶</a></li>	
+					<li  ><a href="index4.html" class="black1" id="3"><img src="images/新闻.png"/>新聞</a></li>
+					<li class="active"><a href="index5.html" class="black2" id="4" ><img src="images/云图.png"/>雲圖</a></li>
+					<li><a href="index.html" class="black3" id="5" onclick="add()"><img src="images/41.png">添加</a></li>
+					 
+					<li><span id="span1"><input type="button" value="更多" id="more"></span></li>
+				</ul>
+				<div id="morecontent">
+					<ul id="ul">
+			
+					</ul>
+				</div>
+			</div>
+			<p class="footer-class">燕妮&霞輝<a href="" target="_blank">Love U</a> </p>
+		</div>
+		<div class="content">
+         <div id="content1"  class="top-nav">
+         <ul id="ull">
+         </ul>
+        </div>
+        
+ </div>
+    <p style="margin-left:780px;/*margin-top:100px*/ ">
+    <input type="image" src="images/1.png"  id="btnimg"  onClick="show()"/>
+    </p>
+</body>
+</html>

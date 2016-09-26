@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>add</title>
+	<style type="text/css">
+		#mybody{
+			background-color: #E2E1DD;
+			position: absolute;
+		}
+		.btn{
+			position: relative;
+			margin-top:20px; 
+			width: 80px;
+			height: 40px;
+			margin-left:50px; 
+		}
+		.in1{
+			width: 200px;
+			height: 50px;
+		}
+		.p{
+			color: #8BD648;
+			font-size: 14px;
+			margin-left:120px;
+			margin-top:-10px; 
+		}
+		.p:hover{
+			color: black;
+		}
+		#tex{
+			
+			margin-left:90px; 
+		}
+		#sp{
+			margin-top:30px; 
+			display:inline-block;
+			width: 40px;
+			height: 30px;
+			margin-left:10px;
+			position:absolute; 
+		}
+		.valuea{
+			color: green;
+		}
+	</style>
+	<script src="yclib.js"></script>
+</head>
+<body id="mybody">
+	<h2>搜藏</h2>
+	<form name="myform">
+		<table  cellpadding="10" width="400">
+			<tr>
+				<td>名称：</td>
+				<td><input type="text" name="flabel" placeholder="IPname" maxlength="20" id="IPname" class="in1" onBlur="chacka()"></td>
+				<td id="youxiao1" class="valuea">请输入有效连接名称</td>
+			</tr>
+			<tr>
+				<td>链接：</td>
+				<td><input type="text" name="furl" placeholder="address" maxlength="25" id="address" class="in1" onBlur="chack()"></td>
+				<td id="texturl" class="valuea">请输入有效连接地址</td>
+			</tr>
+			<tr>
+				<td>Tag：</td>
+				<td><input type="text" name="ftags" placeholder="标签" maxlength="25" id="tag" class="in1"></td>
+				<td class="valuea">请输入相应标签名(选填)</td>
+			</tr>
+		</table>
+		<p class="p">可以多个，用“，”隔开</p>
+		<span id="sp">描述:</span>
+		<textarea name="fdesc" rows="5" cols="25" id="tex"></textarea>
+		<br/>
+		<input type="button" value="提交"  class="btn" id="btn1" />
+		<input type="button" value="取消"  class="btn" id="btn2" />
+	</form>
+	<script type="text/javascript">
+		var IPname=document.getElementById("IPname");
+		var address=document.getElementById("address");
+		var tag=document.getElementById("tag");
+		var tex=document.getElementById("tex");
+		document.getElementById("btn1").onclick=function(){
+			var uri=yc.serialize(document.myform);
+			var options={
+				"method":"POST",
+				"send":uri,
+				"jsonResponseListener":function(json){
+					if(json.code==1){
+						alert("添加成功");
+					}
+				}
+			}
+			yc.ajaxRequest("http://218.196.14.220:8080/webtag/favorite_add.action",options);
+		}
+		document.getElementById("btn2").onclick=function(){
+			window.returnValue='';
+			close();
+		}
+		function chack(){
+				var reg=/^(https|http|ftp):\/\/[a-z]+.[a-z0-9].+[a-z]+/i;
+				if(reg.test(yc.$('address').value)){
+					document.getElementById('texturl').style.color="green";
+				}else{
+					document.getElementById('texturl').style.color="red";
+					// return false;
+					//document.getElementById('btn1').styly.display='none';
+					}
+			}
+			function chacka(){
+				var reg=/[a-zA-Z0-9\u4e00-\u9fa5]{2,6}/i;
+				if(reg.test(yc.$('IPname').value)){
+					document.getElementById('youxiao1').style.color="green";
+				}else{
+					document.getElementById('youxiao1').style.color="red";
+				}
+			}
+	</script>
+</body>
+</html>
